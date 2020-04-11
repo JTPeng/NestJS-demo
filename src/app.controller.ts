@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -20,8 +20,15 @@ export class AppController {
   getProduct(): string {
     return this.appService.getProduct()
   }
+
   @Get('getProductAdd')
   getProductAdd(): string {
     return 'getProductAdd'
+  }
+
+  @Get('ejs')
+  @Render('default/index')
+  getEjs() {
+    return { name: '小白', age: '18' }
   }
 }
