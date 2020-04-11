@@ -18,7 +18,7 @@ async function bootstrap() {
     prefix: '/static/' // 配置虚拟路径
   }) // 配置静态资源目录
 
-  // 配置模板引擎的基本目录
+  // 配置模板引擎的基本目录(存放模板引擎的路径)
   app.setBaseViewsDir('views')
   app.setViewEngine('ejs')
   
