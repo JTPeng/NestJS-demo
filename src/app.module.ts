@@ -5,10 +5,12 @@ import { ArticleController } from './article/article.controller'
 import { UserController } from './user/user.controller';
 import { BookController } from './book/book.controller';
 import { ShopController } from './shop/shop.controller';
+import { ServernewsService } from './servernews/servernews.service';
+import { ServernewsController } from './servernews/servernews.controller';
 
 @Module({
   imports: [],
-  controllers: [AppController, ArticleController, UserController, BookController, ShopController],
-  providers: [AppService],
+  controllers: [AppController, ArticleController, UserController, BookController, ShopController, ServernewsController],
+  providers: [AppService, ServernewsService],
 })
 export class AppModule { }
