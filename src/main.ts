@@ -2,6 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express'
 import { join } from 'path' // 方法二 需要引入的文件
+// 引入cookie-parser
+import * as CookieParser from 'cookie-parser'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -21,6 +23,8 @@ async function bootstrap() {
   // 配置模板引擎的基本目录(存放模板引擎的路径)
   app.setBaseViewsDir('views')
   app.setViewEngine('ejs')
+  // 通过中间件的方式使用cookieparser ---- 和express使用方法一直
+  app.use(CookieParser())
   
   await app.listen(3000);
 }
