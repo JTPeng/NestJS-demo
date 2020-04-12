@@ -10,10 +10,11 @@ import { ServernewsController } from './servernews/servernews.controller';
 import { SetcookieController } from './setcookie/setcookie.controller';
 import { SetcookieService } from './setcookie/setcookie.service';
 import { SetsessionController } from './setsession/setsession.controller';
+import { UploadController } from './upload/upload.controller';
 
 @Module({
   imports: [],
-  controllers: [AppController, ArticleController, UserController, BookController, ShopController, ServernewsController, SetcookieController, SetsessionController],
+  controllers: [AppController, ArticleController, UserController, BookController, ShopController, ServernewsController, SetcookieController, SetsessionController, UploadController],
   providers: [AppService, ServernewsService, SetcookieService],
 })
 export class AppModule { }
