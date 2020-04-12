@@ -1,4 +1,4 @@
-import { Controller, Get, Response, Request } from '@nestjs/common';
+import { Controller, Get, Response, Request, Render } from '@nestjs/common';
 // 1.服务引入
 import { SetcookieService } from './setcookie.service'
 
@@ -13,7 +13,7 @@ export class SetcookieController {
     // maxAge过期时间
     // httpOnly 默认false 不允许客户端脚本访问
     res.cookie('username', 'xiaobai', { maxAge: 1000 * 60, httpOnly: true })
-    // 这里不能通过return给页面发送数据。但是可通过res.send()
+    // 使用了Response之后,不能通过return给页面发送数据。但是可通过res.send()
     res.send('这是cookie(不加密)')
   }
 
@@ -36,5 +36,19 @@ export class SetcookieController {
   getEncryCookie(@Request() req) {
     console.log(req.signedCookies.password)
     return req.signedCookies.password ? `${req.signedCookies.password},是加密后的cookie` : 'cookie已加密无法访问'
+  }
+
+  // ejc模板引擎使用
+  @Get('cookieEjs')
+  @Render('default/cookies')
+  cookieEjs(@Response() res) {
+    // maxAge过期时间
+    // httpOnly 默认false 不允许客户端脚本访问
+    res.cookie('username', 'xiaobai', { maxAge: 1000 * 60, httpOnly: true })
+    return {
+      'username': 'xiaobai'
+    }
+    // 使用了Response之后,不能通过return给页面发送数据。但是可通过res.send()
+    // res.send('这是cookie(不加密)')
   }
 }
