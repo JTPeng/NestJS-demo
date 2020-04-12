@@ -7,6 +7,8 @@ import * as CookieParser from 'cookie-parser'
 // 引入express-session
 import * as session from 'express-session'
 
+// 全局中间件配置
+import { logger } from './middleware/func.middleware'
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // 方法一:
@@ -34,6 +36,10 @@ async function bootstrap() {
   // session配置中间件
   // 在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false）
   app.use(session({ secret: 'session cat', cookie: { maxAge: 6000, httpOnly: true }, rolling: true }))
+
+  // 全局中间件(只能引入函数式中间件)
+  app.use(logger)
+
   await app.listen(3000);
 }
 bootstrap();
