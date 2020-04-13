@@ -24,6 +24,7 @@ import { PipsuserController } from './controller/pipsuser/pipsuser.controller';
 import { AdminModule } from './module/admin/admin.module';
 import { ApiModule } from './module/api/api.module';
 import { DefaultModule } from './module/default/default.module';
+import { ShareModule } from './module/share/share.module';
 
 // 全局中间(只能引入函数式中间件)
 
@@ -31,10 +32,10 @@ import { DefaultModule } from './module/default/default.module';
 // 根模块既可以引入类中间和函数式中间件
 // 根模块告诉nestJS如何去组装该应用
 @Module({
-  imports: [AdminModule, ApiModule, DefaultModule], // 引入其他模块(子模块)
+  imports: [AdminModule, ApiModule, DefaultModule, ShareModule], // 引入其他模块(子模块)
   controllers: [AppController, ArticleController, UserController, BookController, ShopController, ServernewsController, SetcookieController, SetsessionController, UploadController, UploadmanyController, PipsuserController], // 声明控制器
   providers: [AppService, ServernewsService, SetcookieService],  // 声明服务
-  exports: [] // 暴露当前模块的子模块(子元素)
+  exports: [] // 暴露当前模块的子模块(子元素)引入了暴露服务的模块就可以使用该服务
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
