@@ -9,4 +9,8 @@ export class AppService {
   getProduct(): string {
     return 'this is productPage'
   }
+
+  otherModuld(){
+    return 'other module use total service'
+  }
 }
