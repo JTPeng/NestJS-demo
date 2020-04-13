@@ -1,17 +1,17 @@
 import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ArticleController } from './article/article.controller'
-import { UserController } from './user/user.controller';
-import { BookController } from './book/book.controller';
-import { ShopController } from './shop/shop.controller';
-import { ServernewsService } from './servernews/servernews.service';
-import { ServernewsController } from './servernews/servernews.controller';
-import { SetcookieController } from './setcookie/setcookie.controller';
-import { SetcookieService } from './setcookie/setcookie.service';
-import { SetsessionController } from './setsession/setsession.controller';
-import { UploadController } from './upload/upload.controller';
-import { UploadmanyController } from './uploadmany/uploadmany.controller';
+import { ArticleController } from './controller/article/article.controller'
+import { UserController } from './controller/user/user.controller';
+import { BookController } from './controller/book/book.controller';
+import { ShopController } from './controller/shop/shop.controller';
+import { ServernewsService } from './controller/servernews/servernews.service';
+import { ServernewsController } from './controller/servernews/servernews.controller';
+import { SetcookieController } from './controller/setcookie/setcookie.controller';
+import { SetcookieService } from './controller/setcookie/setcookie.service';
+import { SetsessionController } from './controller/setsession/setsession.controller';
+import { UploadController } from './controller/upload/upload.controller';
+import { UploadmanyController } from './controller/uploadmany/uploadmany.controller';
 
 // 中间件
 import { InitMiddleware } from './middleware/init.middleware'
@@ -20,6 +20,7 @@ import { UserMiddleware } from './middleware/user.middleware'
 
 // 函数式中间件
 import { logger } from './middleware/func.middleware'
+import { PipsuserController } from './controller/pipsuser/pipsuser.controller';
 
 // 全局中间(只能引入函数式中间件)
 
@@ -27,7 +28,7 @@ import { logger } from './middleware/func.middleware'
 // 根模块既可以引入类中间和函数式中间件
 @Module({
   imports: [],
-  controllers: [AppController, ArticleController, UserController, BookController, ShopController, ServernewsController, SetcookieController, SetsessionController, UploadController, UploadmanyController],
+  controllers: [AppController, ArticleController, UserController, BookController, ShopController, ServernewsController, SetcookieController, SetsessionController, UploadController, UploadmanyController, PipsuserController],
   providers: [AppService, ServernewsService, SetcookieService],
 })
 export class AppModule implements NestModule {
