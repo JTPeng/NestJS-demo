@@ -37,7 +37,7 @@ async function bootstrap() {
 
   // session配置中间件
   // 在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false）
-  app.use(session({ secret: 'session cat', cookie: { maxAge: 6000, httpOnly: true }, rolling: true }))
+  app.use(session({ secret: 'session cat', cookie: { maxAge: 106000, httpOnly: true }, rolling: true }))
 
   // 全局中间件(只能引入函数式中间件)
   app.use(logger)
