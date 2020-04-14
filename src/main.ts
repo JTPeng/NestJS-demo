@@ -9,6 +9,8 @@ import * as session from 'express-session'
 
 // 全局中间件配置
 import { logger } from './middleware/func.middleware'
+// 配置全局守卫
+import { BookguardGuard } from './guard/bookguard.guard'
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // 方法一:
@@ -39,6 +41,9 @@ async function bootstrap() {
 
   // 全局中间件(只能引入函数式中间件)
   app.use(logger)
+
+  // 全局守卫配置 需要实例化守卫
+  app.useGlobalGuards(new BookguardGuard())
 
   await app.listen(3000);
 }
