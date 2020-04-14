@@ -73,3 +73,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
   Nest is [MIT licensed](LICENSE).
+
+### git备注命令
+git reset --hard commit提交记录 (会删除该记录后的所有提交记录) 
+git push origin HEAD --force 进行提交

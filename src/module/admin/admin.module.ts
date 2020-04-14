@@ -4,8 +4,10 @@ import { AdminarticleController } from './controller/adminarticle/adminarticle.c
 import { AdminuserService } from './service/adminuser/adminuser.service';
 import { AdminarticleService } from './service/adminarticle/adminarticle.service';
 
+// 引入公共服务
+import { TotaluserService } from '../share/service/totaluser/totaluser.service';
 @Module({
   controllers: [AdminuserController, AdminarticleController],
-  providers: [AdminuserService, AdminarticleService]
+  providers: [AdminuserService, AdminarticleService, TotaluserService] // 声明使用该服务
 })
-export class AdminModule {}
+export class AdminModule { }
