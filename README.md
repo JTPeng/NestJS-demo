@@ -75,10 +75,16 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
   Nest is [MIT licensed](LICENSE).
 
 ### git备注命令
+
 - git reset --hard commit提交记录 (会删除该记录后的所有提交记录) 
 - git push origin HEAD --force 进行提交
 
+### 路由访问注意事项
+- 由于设置了全局守卫,请优先访问`http://localhost:3000/login/setlogin`
+- 或者屏蔽`main.ts`中的`app.useGlobalGuards(new BookguardGuard())`代码
+
 ### 上传图片注意事项
+
 - 需要在根目录下新建一个public文件夹。目录结构如下:（可根据代码中的路径自行修改）
 ```shell
   - public
