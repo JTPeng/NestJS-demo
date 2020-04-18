@@ -2,19 +2,19 @@
 const userModel = require('./user.js');
 
 const user = new userModel({
-  name: '小二',
-  age: 25,
+  name: '     小三    ',
+  age: 18,
 });
 user.save((err, doc) => {
   if (err) {
     console.log(err);
     return;
   }
-  userModel.find({}, (err1, doc1) => {
-    if (err1) {
-      console.log(err1);
+  userModel.find({}, (err, doc) => {
+    if (err) {
+      console.log(err);
       return;
     }
-    console.log(doc1);
+    console.log(doc);
   });
 });
