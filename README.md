@@ -75,5 +75,14 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
   Nest is [MIT licensed](LICENSE).
 
 ### git备注命令
-git reset --hard commit提交记录 (会删除该记录后的所有提交记录) 
-git push origin HEAD --force 进行提交
+- git reset --hard commit提交记录 (会删除该记录后的所有提交记录) 
+- git push origin HEAD --force 进行提交
+
+### 上传图片注意事项
+- 需要在根目录下新建一个public文件夹。目录结构如下:（可根据代码中的路径自行修改）
+```shell
+  - public
+    - upload
+```
+
+### mongosse的CRUD操作
