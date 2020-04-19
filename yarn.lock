@@ -507,6 +507,11 @@
     tslib "1.11.1"
     uuid "7.0.2"
 
+"@nestjs/mongoose@^6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/mongoose/-/mongoose-6.4.0.tgz#3ea2773528f8c4948b76377d24008f5b663b4e14"
+  integrity sha512-Q+W1ydZEYG24AnYYbgtNBXE2iIMwfiCUSMilt8swFE8Gl1dAum10NCPLbMgFc31JRKDJFmvxUBftTD0JiGYlmQ==
+
 "@nestjs/platform-express@^7.0.0":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.0.4.tgz#78cbc3e850ee21d20d853ce882896d829d191e5c"

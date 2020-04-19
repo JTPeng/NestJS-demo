@@ -43,7 +43,7 @@ async function bootstrap() {
   app.use(logger)
 
   // 全局守卫配置 需要实例化守卫
-  app.useGlobalGuards(new BookguardGuard())
+  // app.useGlobalGuards(new BookguardGuard())
 
   await app.listen(3000);
 }

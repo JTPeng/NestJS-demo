@@ -92,3 +92,13 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ```
 
 ### mongosse的CRUD操作
+
+
+### NestJS中使用mongoose连接MongoDb数据库
+- 安装 yarn add @nestjs/mongoose mongoose --save
+- 根模块(app.module.ts)配置数据库连接
+  - 在imports中引入具体配置
+- 配置Schema
+- 在控制器对应的Module配置Model
+  - 在对应的Service中配置 配置使用Model 书写相关数据库操作
+- 对应控制器中引入服务.配置路由

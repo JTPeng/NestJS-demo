@@ -17,7 +17,7 @@ import { UploadmanyController } from './controller/uploadmany/uploadmany.control
 import { InitMiddleware } from './middleware/init.middleware'
 import { UserMiddleware } from './middleware/user.middleware'
 
-
+// 全局中间(只能引入函数式中间件)
 // 函数式中间件
 import { logger } from './middleware/func.middleware'
 import { PipsuserController } from './controller/pipsuser/pipsuser.controller';
@@ -27,14 +27,37 @@ import { DefaultModule } from './module/default/default.module';
 import { ShareModule } from './module/share/share.module';
 import { LoginModule } from './module/login/login.module';
 
-// 全局中间(只能引入函数式中间件)
-
+// 配置数据库连接
+import { MongooseModule } from '@nestjs/mongoose'
+import { ArticleModule } from './mongoose/article/article/article.module';
 
 // 根模块既可以引入类中间和函数式中间件
 // 根模块告诉nestJS如何去组装该应用
 @Module({
-  imports: [AdminModule, ApiModule, DefaultModule, ShareModule, LoginModule], // 引入其他模块(子模块)
-  controllers: [AppController, ArticleController, UserController, BookController, ShopController, ServernewsController, SetcookieController, SetsessionController, UploadController, UploadmanyController, PipsuserController], // 声明控制器
+  imports: [
+    AdminModule,
+    ApiModule,
+    DefaultModule,
+    ShareModule,
+    LoginModule,
+    MongooseModule.forRoot(
+      'mongodb://eggadmin:123456@localhost:27017/eggcms',
+      { useNewUrlParser: true }
+    ),
+    ArticleModule], // 引入其他模块(子模块) 引入自定义模块/第三方模块
+  controllers: [
+    AppController,
+    ArticleController,
+    UserController,
+    BookController,
+    ShopController,
+    ServernewsController,
+    SetcookieController,
+    SetsessionController,
+    UploadController,
+    UploadmanyController,
+    PipsuserController
+  ], // 声明控制器
   providers: [AppService, ServernewsService, SetcookieService],  // 声明服务
   exports: [] // 暴露当前模块的子模块(子元素)引入了暴露服务的模块就可以使用该服务
 })
