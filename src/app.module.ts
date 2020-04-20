@@ -36,6 +36,7 @@ import { MongoosebookModule } from './mongoose/mongoosebook/mongoosebook.module'
 // 配置数据库连接 MySQL
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BookModule } from './mysqlabout/book/book.module';
+import { NavModule } from './mysqlabout/nav/nav.module';
 // 根模块既可以引入类中间和函数式中间件
 // 根模块告诉nestJS如何去组装该应用
 @Module({
@@ -61,7 +62,8 @@ import { BookModule } from './mysqlabout/book/book.module';
     }),
     ArticleModule,
     MongoosebookModule,
-    BookModule], // 引入其他模块(子模块) 引入自定义模块/第三方模块
+    BookModule,
+    NavModule], // 引入其他模块(子模块) 引入自定义模块/第三方模块
   controllers: [
     AppController,
     ArticleController,
