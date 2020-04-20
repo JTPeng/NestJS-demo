@@ -27,12 +27,15 @@ import { DefaultModule } from './module/default/default.module';
 import { ShareModule } from './module/share/share.module';
 import { LoginModule } from './module/login/login.module';
 
-// 配置数据库连接
+// 配置数据库连接 MongoDB
 import { MongooseModule } from '@nestjs/mongoose'
 import { ArticleModule } from './mongoose/article/article/article.module';
 
 import { MongoosebookModule } from './mongoose/mongoosebook/mongoosebook.module';
 
+// 配置数据库连接 MySQL
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { BookModule } from './mysqlabout/book/book.module';
 // 根模块既可以引入类中间和函数式中间件
 // 根模块告诉nestJS如何去组装该应用
 @Module({
@@ -46,8 +49,19 @@ import { MongoosebookModule } from './mongoose/mongoosebook/mongoosebook.module'
       'mongodb://eggadmin:123456@localhost:27017/eggcms',
       { useNewUrlParser: true }
     ),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: '12345678',
+      database: 'react_blog',  // 连接的数据库名称
+      entities: [__dirname + '/**/*.entity{.ts,.js}'], // 默认配置一般不做修改
+      synchronize: true,
+    }),
     ArticleModule,
-    MongoosebookModule], // 引入其他模块(子模块) 引入自定义模块/第三方模块
+    MongoosebookModule,
+    BookModule], // 引入其他模块(子模块) 引入自定义模块/第三方模块
   controllers: [
     AppController,
     ArticleController,
